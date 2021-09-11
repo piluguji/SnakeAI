@@ -164,15 +164,14 @@ def main():
             s.addCube()
             snack = cube(randomSnack(s), color = (255, 255, 0))
 
+        for c in s.body[1:]:
+            if s.head.pos == c.pos:
+                flag = False
+
+        if s.head.pos[0] in {-1, 20} or s.head.pos[1] in {-1, 20}:
+            flag = False
+
         redrawWindow(win)
-
-        #Checking is X button is pressed to exit game
-        #for event in pygame.event.get():
-        #    if event.type == pygame.QUIT:
-        #        flag = False
-
-
-
 
 if __name__ == '__main__':
     main()
