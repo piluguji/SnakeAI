@@ -34,6 +34,7 @@ class snake(object):
     turns = {}
 
     def __init__(self, color, pos):
+        self.score = 0
         self.color = color
         self.head = cube(pos)
         self.body.append(self.head)
@@ -85,8 +86,12 @@ class snake(object):
         
 
     def reset(self, pos):
+
+        print("Score: " + str(self.score))
+
         self.head.pos = pos
         self.body = [self.head]
+        self.score = 0
         
 
     def addCube(self):
@@ -157,12 +162,13 @@ def main():
     flag = True
 
     while flag: 
-        pygame.time.delay(50) #adds manual delay to prevent from running too fast
-        clock.tick(10) #ensures game runs at 10 fps
+        #pygame.time.delay(50) #adds manual delay to prevent from running too fast
+        clock.tick(15) #ensures game runs at 10 fps
 
         s.move()
 
         if s.head.pos == snack.pos:
+            s.score += 1
             s.addCube()
             snack = cube(randomSnack(s), color = (255, 255, 0))
 
