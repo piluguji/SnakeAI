@@ -85,7 +85,9 @@ class snake(object):
         
 
     def reset(self, pos):
-        pass
+        self.head.pos = pos
+        self.body = [self.head]
+        
 
     def addCube(self):
         tail = self.body[-1]
@@ -166,10 +168,10 @@ def main():
 
         for c in s.body[1:]:
             if s.head.pos == c.pos:
-                flag = False
+                s.reset((10, 10))
 
         if s.head.pos[0] in {-1, 20} or s.head.pos[1] in {-1, 20}:
-            flag = False
+            s.reset((10, 10))
 
         redrawWindow(win)
 
